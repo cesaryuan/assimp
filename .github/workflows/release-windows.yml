@@ -110,7 +110,7 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: build/assimp-bins-${{ matrix.name }}.zip
+        name: assimp-bins-${{ matrix.name }}.zip
         path: build/assimp-bins-${{ matrix.name }}.zip
 
     - name: Release with Notes
