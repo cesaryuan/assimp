@@ -109,6 +109,8 @@ jobs:
       with:
         name: 'assimp-bins-${{ matrix.name }}'
         path: build/bin
+        
+    - run: 
 
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
