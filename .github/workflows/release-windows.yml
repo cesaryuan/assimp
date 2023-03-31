@@ -105,18 +105,18 @@ jobs:
     #   run: cd build/bin && ./unit ${{ steps.hunter_extra_test_args.outputs.args }}
     #   shell: bash
 
-    - uses: actions/upload-artifact@v3
-      with:
-        name: 'assimp-bins-${{ matrix.name }}'
-        path: build/bin
-
     - run: Compress-Archive build/bin -DestinationPath build/assimp-bins-${{ matrix.name }}.zip
       shell: pwsh
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: build/assimp-bins-${{ matrix.name }}.zip
+        path: build/assimp-bins-${{ matrix.name }}.zip
 
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
         files: build/assimp-bins-${{ matrix.name }}.zip
-        tag_name: ${{ github.ref || 'v5.2.5' }}
+        tag_name: ${{ github.ref || 'v5.2.5'}}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
