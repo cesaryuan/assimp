@@ -24,14 +24,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-          submodules: true
+        submodules: true
           
     - uses: lukka/get-cmake@latest
     
     - uses: ilammy/msvc-dev-cmd@v1
     
     - name: Set Compiler Environment
-      if: !endsWith(matrix.name, 'hunter')
+      if: "!endsWith(matrix.name, 'hunter')"
       uses: lukka/set-shell-env@v1
       with:
         CXX: ${{ matrix.cxx }}
