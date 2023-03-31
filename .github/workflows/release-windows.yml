@@ -2,6 +2,8 @@ name: Release Windows
 
 on:
   push:
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 permissions:
@@ -115,5 +117,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: build/assimp-bins-${{ matrix.name }}.zip
+        tag_name: ${{ github.ref || 'v5.2.5' }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
